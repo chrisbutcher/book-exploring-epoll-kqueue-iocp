@@ -43,7 +43,7 @@ Even though the OS is pretty good at running many threads concurrently context s
 
 ### Epoll/Kqueue/IOCP
 
-These methods let's us hook into the OS in a way in which we can wait for many events, instead of beeing limited to waiting on one event per thread, we can wait for many events on one thread. This let's us avoid one of the biggest drawbacks using one thread pr event which is all the memory that is occupied and the overhead of continously spawning new threads. Now we only have one thread waiting for many tasks.
+These methods let's us hook into the OS in a way in which we can wait for many events, instead of beeing limited to waiting on one event per thread, we can wait for many events on one thread. This let's us avoid one of the biggest drawbacks using one thread per event which is all the memory that is occupied and the overhead of continously spawning new threads. Now we only have one thread waiting for many tasks.
 
 These methods have in common that they are a sort of `blocking`I/0. If we only register one event to the epoll/kqueue/iocp event queue and wait for it, it will be no different than using blocking I/O. The advantage comes we can have a queue that waits for hundreds of thousands events with very little wasted resources.
 
